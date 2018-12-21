@@ -11,14 +11,14 @@ pipeline {
             steps {
                 sh 'chmod +x /usr/local/bin/packer'
                 sh 'pwd'
-                sh 'packer validate create-ami.json'
+                sh 'packer validate ubuntu16-base.json'
                 }
         }
         stage('packer build AMI') {
             steps {
                 sh 'pwd'
-                sh 'packer build create-ami.json'
-                sh 'cat manifest.json | jq -r .builds[0].artifact_id |  cut -d':' -f2'
+                sh 'packer build ubuntu16-base.json'
+                sh 'cat manifest.json | jq -r .builds[0].artifact_id |  cut -d\':\' -f2'
             }
         }
     
