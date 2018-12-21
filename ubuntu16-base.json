@@ -1,0 +1,40 @@
+{
+    "_comment" : "Packer Template to create base ubuntu 16.04 AMI",
+    "variables": {
+      "aws_access_key": "{{env `aws_access_key`}}",
+      "aws_secret_key": "{{env `aws_secret_key`}}"
+    },
+    "builders": [{
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-east-2",
+      "source_ami": "ami-0653e888ec96eab9b",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "Bluejeans-ubuntu16-04-base-{{isotime \"2006-01-02T1504\"}}"
+    }],
+    "provisioners": [{
+      "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
+      "type": "shell",
+      "inline": [
+          "sudo hostname",
+          "sudo apt-get update",
+          "sudo apt-get remove --purge landscape-common",
+          "sudo apt-get install figlet",
+          "touch motd",
+          "figlet \"welcome to bluejeans\" > motd",
+          "sudo cp motd /etc/motd",
+          "sudo chown root:root /etc/motd"
+      ]
+    }],
+    "post-processors": [
+      [
+        {
+          "output": "manifest.json",
+          "strip_path": true,
+          "type": "manifest"
+        }
+      ]
+    ]
+  }
