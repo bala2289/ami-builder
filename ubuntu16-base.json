@@ -16,7 +16,7 @@
     }],
     "provisioners": [
       {
-        "type": "local-shell",
+        "type": "shell-local",
         "inline":["echo $access_key $secret_key"]
       },
       {
