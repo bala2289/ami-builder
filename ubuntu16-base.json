@@ -14,7 +14,12 @@
       "ssh_username": "ubuntu",
       "ami_name": "Bluejeans-ubuntu16-04-base-{{isotime \"2006-01-02T1504\"}}"
     }],
-    "provisioners": [{
+    "provisioners": [
+      {
+        "type": "local-shell",
+        "inline":["echo $access_key $secret_key"]
+      },
+      {
       "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
       "type": "shell",
       "inline": [
@@ -27,7 +32,8 @@
           "sudo cp motd /etc/motd",
           "sudo chown root:root /etc/motd"
       ]
-    }],
+    }
+  ],
     "post-processors": [
       [
         {
