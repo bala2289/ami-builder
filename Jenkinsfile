@@ -17,7 +17,7 @@ pipeline {
         stage('packer build AMI') {
             steps {
                 sh 'pwd'
-                sh 'packer build -var aws_access_key=$AWS_ACCESS_KEY_ID -var aws_secret_key=$AWS_SECRET_ACCESS_KEY ubuntu16-base.json'
+                sh 'packer build -var \'aws_access_key="$AWS_ACCESS_KEY_ID" -var \'aws_secret_key="$AWS_SECRET_ACCESS_KEY"\' ubuntu16-base.json'
                 sh 'cat manifest.json | jq -r .builds[0].artifact_id |  cut -d\':\' -f2'
             }
         }
