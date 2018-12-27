@@ -16,10 +16,6 @@
     }],
     "provisioners": [
       {
-        "type": "shell-local",
-        "inline":["echo $access_key $secret_key"]
-      },
-      {
       "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
       "type": "shell",
       "inline": [
