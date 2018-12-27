@@ -17,7 +17,7 @@ pipeline {
         stage('packer build AMI') {
             steps {
                 sh 'packer build ubuntu16-base.json'
-                sh 'artifactid=`cat manifest.json | jq -r .builds[0].artifact_id |  cut -d\':\' -f2`'
+                sh 'export artifactid=`cat manifest.json | jq -r .builds[0].artifact_id |  cut -d\':\' -f2`'
                 sh 'echo $artifactid'
             }
         }
