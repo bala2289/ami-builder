@@ -35,11 +35,11 @@ pipeline {
 
             }
         }
-    post { 
+    }
+    post {
         success {
             echo 'Cleaning up..'
             sh 'rm manifest.json'
-            }
         }
     }
 }
