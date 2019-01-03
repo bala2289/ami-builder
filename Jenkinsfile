@@ -39,6 +39,7 @@ pipeline {
         success {
             echo 'Cleaning up..'
             sh 'rm manifest.json'
+            }
         }
     }
 }
