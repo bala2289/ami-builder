@@ -48,16 +48,6 @@ pipeline {
                 '''
             }
         }
-        stage('git push') {
-            steps {
-                sshagent(['f404bdfc-6e3a-4cac-9ff4-866b8e1bbcf1']) {
-                sh 'cd packer-templates',
-                sh 'git push'
-                }
-            }
-        }
-
-    }
     post {
         success {
             echo 'Cleaning up..'
