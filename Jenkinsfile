@@ -36,11 +36,11 @@ pipeline {
         stage('Modify AMI id in templates') {
             steps {
                 sh '''
-                export new-ami-id=`cat new-ami-id.txt`
+                export newamiid=`cat new-ami-id.txt`
                 cd packer-templates
                 grep ami couchdb/couchdb.json
-                export old-ami-id=`cat current-ami.txt`
-                for i in `find .  -name *.json`;do sed -i 's/$old-ami-id/$new-ami-id/g' $i; done
+                export oldamiid=`cat current-ami.txt`
+                for i in `find .  -name *.json`;do sed -i 's/$oldamiid/$newamiid/g' $i; done
                 grep ami couchdb/couchdb.json
                 '''
             }
