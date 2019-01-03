@@ -6,6 +6,7 @@
       "secret_key": "",
       "type": "amazon-ebs",
       "region": "us-east-2",
+      "ami-regions": ["us-east-1"],
       "source_ami": "ami-0653e888ec96eab9b",
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",

@@ -23,8 +23,18 @@ pipeline {
                 '''
             }
         }
-    
-    }
+        stage('Git Clone Packer templates') {
+            steps {
+                sshagent(['f404bdfc-6e3a-4cac-9ff4-866b8e1bbcf1']) {
+                sh '''
+                    git@github.com:bala2289/packer-templates.git
+                    cd packer-templates
+                    ls
+                '''
+                }
+
+            }
+        }
     post { 
         success {
             echo 'Cleaning up..'
