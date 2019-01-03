@@ -44,7 +44,7 @@ pipeline {
                 grep ami templates/couchdb/couchdb.json
                 for i in `find templates/  -name *.json`;do sed -i "s/$oldamiid/$newamiid/g" $i; done
                 grep ami templates/couchdb/couchdb.json
-                echo $newamiid >> current-ami-id.txt
+                echo $newamiid > current-ami-id.txt
                 '''
             }
         }
