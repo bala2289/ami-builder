@@ -48,6 +48,14 @@ pipeline {
                 '''
             }
         }
+        stage('git push') {
+            steps {
+                sshagent(['f404bdfc-6e3a-4cac-9ff4-866b8e1bbcf1']) {
+                sh 'pwd;ls'
+                sh 'git push'
+                }
+            }
+        }
     }
     post {
         success {
