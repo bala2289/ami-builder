@@ -30,6 +30,7 @@ pipeline {
                     rm -rf packer-templates
                     ssh -o StrictHostKeyChecking=no git@github.com || true
                     git clone git@github.com:bala2289/packer-templates.git || true
+                    git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT
                     '''
                 }
             }
