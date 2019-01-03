@@ -51,11 +51,13 @@ pipeline {
         stage('git push') {
             steps {
                 sshagent(['f404bdfc-6e3a-4cac-9ff4-866b8e1bbcf1']) {
-                sh 'cd packer-templates',
-                sh 'git add current-ami-id.txt',
-                sh 'for i in `find templates/  -name *.json`;do git add $i; done',
-                sh 'git commit -m "modified ami-id" -a',
-                sh 'git push'
+                sh ''' 
+                cd packer-templates
+                git add current-ami-id.txt
+                for i in `find templates/  -name *.json`;do git add $i; done
+                git commit -m "modified ami-id" -a
+                git push
+                '''
                 }
             }
         }
