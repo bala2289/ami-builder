@@ -53,6 +53,8 @@ pipeline {
                 sshagent(['f404bdfc-6e3a-4cac-9ff4-866b8e1bbcf1']) {
                 sh ''' 
                 cd packer-templates
+                git config --global user.email "bala2289@gmail.com"
+                git config --global user.name "bala2289"
                 git add current-ami-id.txt
                 for i in `find templates/  -name *.json`;do git add $i; done
                 git commit -m "modified ami-id" -a
