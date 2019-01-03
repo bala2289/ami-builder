@@ -27,7 +27,8 @@ pipeline {
             steps {
                 sshagent(['f404bdfc-6e3a-4cac-9ff4-866b8e1bbcf1']) {
                 sh '''
-                    git@github.com:bala2289/packer-templates.git
+                    ssh -o StrictHostKeyChecking=no git@github.com || true
+                    git clone git@github.com:bala2289/packer-templates.git || true
                     cd packer-templates
                     ls
                 '''
