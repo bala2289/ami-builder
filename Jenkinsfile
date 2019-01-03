@@ -41,7 +41,7 @@ pipeline {
                 cd packer-templates
                 export oldamiid=`cat current-ami-id.txt`
                 grep ami templates/couchdb/couchdb.json
-                for i in `find templates/  -name *.json`;do sed -i 's/$oldamiid/$newamiid/g' $i; done
+                for i in `find templates/  -name *.json`;do sed -i "s/$oldamiid/$newamiid/g" $i; done
                 grep ami templates/couchdb/couchdb.json
                 echo $newamiid >> current-ami-id.txt
                 '''
