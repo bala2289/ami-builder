@@ -9,11 +9,7 @@
       "source_ami": "ami-0653e888ec96eab9b",
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
-      "ami_name": "Bluejeans-ubuntu16-04-base-{{isotime \"2006-01-02T1504\"}}",
-      "ami_regions": [
-        "us-east-1",
-        "us-west-1"
-      ]
+      "ami_name": "Bluejeans-ubuntu16-04-base-{{isotime \"2006-01-02T1504\"}}"
     }],
     "provisioners": [
       {
