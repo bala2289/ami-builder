@@ -1,6 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
+    options {
+        timeout(time: 30, unit: 'MINUTES') 
+    }
     stages {
         stage('pipeline start') {
             steps {
