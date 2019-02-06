@@ -17,7 +17,6 @@
       "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
       "type": "shell",
       "inline": [
-          "hostname",
           "sudo apt-get update",
           "sudo apt-get update",
           "sudo apt-get install figlet",
